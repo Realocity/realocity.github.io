@@ -1,14 +1,14 @@
 <?php    
 if(isset($_POST['submit'],$_POST['Name'],$_POST['Email'],$_POST['Subject'],$_POST['Message'])){
-    $name = $_POST['Name']; 
-    $email = $_POST['Email']; 
-    $subject = $_POST['Subject']; 
-    $message = $_POST['Message']; 
+    $form_name = $_POST['Name']; 
+    $form_email = $_POST['Email']; 
+    $form_subject = $_POST['Subject']; 
+    $form_message = $_POST['Message']; 
 
     $email_from = $email;
     $email_to = 'ssapkal101@gmail.com';
 
-    $body = 'Name: ' . $name . "\n\n" . 'Email: ' . $email . "\n\n" . 'Subject: ' . $subject . "\n\n" . 'Message: ' . $message;
+    $body = 'Name: ' . $form_name . "\n\n" . 'Email: ' . $form_email . "\n\n" . 'Subject: ' . $form_subject . "\n\n" . 'Message: ' . $form_message;
 
     $success = mail($email_to, $subject, $body, 'From: <'.$email_from.'>');
 
