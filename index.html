@@ -1585,7 +1585,7 @@
                     <a href="https://goo.gl/maps/k15rmm6eUp1KYPPq9">
                       <i class="lnr lnr-map-marker"></i>
                       <a href="https://goo.gl/maps/k15rmm6eUp1KYPPq9">
-                        <h4>Pune, Maharashtra, India.</h4>
+                        <h4>Location</h4>
                       </a>
                       <span class="lm-info-block-value"></span>
                       <span class="lm-info-block-text"></span>
@@ -1596,7 +1596,7 @@
                     <a href="tel:+918806178117">
                       <i class="lnr lnr-phone-handset"></i>
                       <a href="tel:+918806178117">
-                        <h4>Call me at <br>+91-8806178117</h4>
+                        <h4>Call Me</h4>
                       </a>
                       <span class="lm-info-block-value"></span>
                       <span class="lm-info-block-text"></span>
@@ -1607,7 +1607,7 @@
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dev.shubhamsapkal@gmail.com">
                       <i class="lnr lnr-envelope"></i>
                       <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dev.shubhamsapkal@gmail.com">
-                        <h4>mail me on <br>dev.shubhamsapkal</h4>
+                        <h4>Email Me</h4>
                       </a>
                       <span class="lm-info-block-value"></span>
                       <span class="lm-info-block-text"></span>
@@ -1618,14 +1618,12 @@
                     <a href="https://github.com/Realocity">
                       <i class="lnr lnr-checkmark-circle"></i>
                       <a href="https://github.com/Realocity">
-                        <h4>Research -<br> Design - Develop</h4>
+                        <h4>Visit My GitHub</h4>
                       </a>
                       <span class="lm-info-block-value"></span>
                       <span class="lm-info-block-text"></span>
                     </a>
                   </div>
-
-
                 </div>
                 <!-- End of Contact Info -->
 
@@ -1681,7 +1679,7 @@
                       <div class="g-recaptcha" data-sitekey="6Ld98NIZAAAAAIs-qArrcqXIbyA4e0aaleOXXuMw"
                         data-theme="dark"></div>
 
-                      <input type="submit" class="button btn-send" value="Send message">
+                      <input id="submit" type="submit" class="button btn-send" value="Send message">
                     </div>
                   </form>
                 </div>
@@ -1696,6 +1694,47 @@
 
     </div>
   </div>
+
+   <!-- Contact Form Script Sction -->
+   <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDkCl-HcaFg1Bz2QmdroBof1batKvfBzYs",
+      authDomain: "realocity-contact.firebaseapp.com",
+      projectId: "realocity-contact",
+      storageBucket: "realocity-contact.appspot.com",
+      messagingSenderId: "982533961429",
+      appId: "1:982533961429:web:6a54592447a640e112d45c",
+      measurementId: "G-J41WFLLED0"
+    };
+  
+  // Initialize Firebase
+              const app = initializeApp(firebaseConfig);
+  
+     //get ref to database services
+               const db = getDatabase(app);
+  
+               document.getElementById("submit").addEventListener('click', function(e){
+                e.preventDefault();
+                set(ref(db, 'user/' + document.getElementById("form_name").value),
+                {
+     
+                  username: document.getElementById("form_name").value,
+                  email: document.getElementById("form_email").value,
+                  Subject: document.getElementById("form_subject").value,
+                  Message: document.getElementById("form_message").value
+  
+                });
+                  alert("Message Send Sucessfull  !");
+                  location.reload();
+              });
+              </script>
+   <!-- Contact Form Script Sction End -->
 
   <script data-cfasync="false"
     src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
